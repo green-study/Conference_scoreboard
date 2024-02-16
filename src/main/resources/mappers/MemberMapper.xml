@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- add data -->
+<mapper namespace="com.example.demo.mapper.MemberMapper">
+    <insert id="joinMember" parameterType="com.example.demo.dto.MemberDto">
+        INSERT INTO TESTER(TNAME, TSCHOOL, TSCORE)
+        VALUES(#{tname}, #{tschool}, #{tscore})
+    </insert>
+</mapper>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <link th:href="@{${'/static/img/favicon.ico'}}" rel="icon" type="image/x-icon" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <title>FETC Robolink</title>
+</head>
+<body>
+    <h3>Data Input</h3>
+
+    <form id="dataForm">
+        <label for="tname">Name:</label>
+        <input type="text" id="tname" name="tname"><br><br>
+
+        <label for="tschool">School:</label>
+        <input type="text" id="tschool" name="tschool"><br><br>
+
+        <label for="tscore">Score:</label>
+        <input type="number" id="tscore" name="tscore"><br><br>
+
+        <button type="button" onclick="saveData()">Save</button>
+    </form>
+
+    <script>
+        function saveData() {
+            var form = document.getElementById('dataForm');
+            var formData = new FormData(form);
+
+            fetch('/join', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => {
+                    if (response.ok) {
+                        sendAdminMessage();
+                        setTimeout(refreshPages,200);
+                    } else {
+                        throw new Error('Failed to save data');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        function refreshPages() {
+            alert('Data saved successfully');
+            location.reload();
+        }
+
+        function sendAdminMessage() {
+            const socket = new SockJS('/ws-endpoint');
+            const stompClient = Stomp.over(socket);
+
+            stompClient.connect({}, function () {
+                stompClient.send('/app/admin-message', {}, JSON.stringify({ message: 'Admin message' }));
+            });
+        }
+    </script>
+</body>
+</html>

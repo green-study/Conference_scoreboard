@@ -1,0 +1,52 @@
+package com.example.demo.controller;
+import com.example.demo.dao.TesterDao;
+import com.example.demo.model.Tester;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.Model;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class TesterController {
+
+    private final TesterDao testerDao;
+
+    public TesterController(TesterDao testerDao) {
+        this.testerDao = testerDao;
+    }
+
+    @GetMapping("/main")
+    public String main(Model model) {
+        List<Tester> testers = testerDao.selectList();
+        testers.sort(Comparator.comparing(Tester::getTno).reversed());
+        model.addAttribute("testers", testers);
+        return "main";
+    }
+
+    @GetMapping("/sub")
+    public String sub(Model model) {
+        List<Tester> testers = testerDao.selectList();
+        testers.sort(Comparator.comparing(Tester::getTscore)
+                .reversed()
+                .thenComparing(Tester::getTno, Comparator.reverseOrder()));
+        model.addAttribute("testers", testers);
+        if(testers.size() > 10){
+            int size = testers.size();
+            for(int i = 0; i<size-10; i++){
+                testers.remove(10);
+            }
+        }
+
+        return "sub";
+    }
+
+    @GetMapping("/admin")
+    public String showAdminPage(Model model) {
+
+        return "admin";
+    }
+
+}

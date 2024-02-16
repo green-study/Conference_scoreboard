@@ -1,0 +1,66 @@
+#leader_board_button {
+    width: 195px;
+    height: 43px;
+    margin-right: 15px;
+    border-radius: 36px;
+    font-size: 16px;
+    font-weight: 700;
+    background-color:transparent;
+    color: rgba(63, 208, 255, 1);
+    border: 3px solid rgba(63, 208, 255, 1);
+}
+
+#top_10_button {
+    width: 144px;
+    height: 51px;
+    border-radius: 36px;
+    font-size: 22px;
+    font-weight: 700;
+    background-color: rgba(63, 208, 255, 1);
+    color: rgba(28, 16, 66, 1);
+    border: none;
+}
+
+
+.score_table tbody tr:nth-child(1)::after,
+.score_table tbody tr:nth-child(2)::after,
+.score_table tbody tr:nth-child(3)::after  {
+    content: '';
+    display: block;
+    width: 851px;
+    height: 60px;
+    padding: 6px 10px 6px 10px;
+    background-color: rgba(62, 117, 255, 0.3);
+    position: absolute;
+    left: 58px;
+    top: 15px;
+    z-index: -1;
+}
+
+.score_table  tbody tr:nth-child(1) td:nth-child(4)::after,
+.score_table  tbody tr:nth-child(2) td:nth-child(4)::after,
+.score_table  tbody tr:nth-child(3) td:nth-child(4)::after
+{
+    content: '';
+    display: block;
+    width: 100px;
+    height: 50px;
+    background-image: url("img/win.png");
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 65px;
+    position: absolute;
+    top: 25px;
+    right: -25px;
+    z-index: 1;
+}
+
+.score_table  tbody tr:nth-child(1) td:nth-child(2),
+.score_table  tbody tr:nth-child(2) td:nth-child(2),
+.score_table  tbody tr:nth-child(3) td:nth-child(2),
+.score_table  tbody tr:nth-child(1) td:nth-child(3),
+.score_table  tbody tr:nth-child(2) td:nth-child(3),
+.score_table  tbody tr:nth-child(3) td:nth-child(3)
+{
+    color: rgba(255, 197, 0, 1);
+}

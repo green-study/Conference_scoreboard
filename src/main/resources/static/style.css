@@ -1,0 +1,161 @@
+@font-face {
+    font-family: 'Cabin';
+    src: url('fonts/Cabin-Regular.ttf') format('truetype'); /* 폰트 파일의 경로와 형식 지정 */
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: #05001C;
+    background-image: url('img/background-image.png'), url('img/background-image2.png');
+    background-size: 1000px, 1000px;
+    background-repeat : no-repeat;
+    background-position: center top, center bottom;
+    font-family: 'Cabin', sans-serif;
+}
+
+button {
+    font-family: 'Cabin', sans-serif;
+    letter-spacing: 2px;
+}
+
+.main__container{
+    width: 1080px;
+    margin: auto;
+}
+
+.second__container {
+    margin: 0 40px 0 40px;
+}
+
+.main__logo img {
+    margin: auto;
+    margin-top: 60px;
+    display: block;
+    width: 551px;
+}
+
+.star__logo img{
+    width: 220px;
+    position: absolute;
+    margin: -120px 0 0 765px;
+}
+
+.page_button {
+    margin: 10px 12px 0 55px;
+}
+
+.table__container {
+    margin: 30px 0 15px 0;
+}
+
+.score_table{
+    margin: auto;
+    margin-right: 45px;
+    margin-bottom: 80px;
+    padding: 10px;
+    background: linear-gradient(to right, rgba(62, 117, 255, 1) 2px, transparent 1px),
+    repeating-linear-gradient(rgba(62, 117, 255, 1), rgba(62, 117, 255, 1) 3px, #05001C 3px, #05001C 12px),
+    repeating-linear-gradient(rgba(62, 117, 255, 1), rgba(62, 117, 255, 1) 3px, #05001C 3px, #05001C 12px),
+    linear-gradient(to left, rgba(62, 117, 255, 1) 2px, transparent 1px);
+    background-size: 1.5px 100%, 3px 98%, 3px 98%, 1.5px 100%;
+    background-position: 54px center,59px center, 946.5px center, right center;
+    background-repeat: no-repeat;
+}
+
+.score_table tbody tr {
+    position: relative;
+}
+
+.score_table tbody tr:nth-child(1) td {
+    border-top: none;
+}
+
+.score_table tbody tr td:nth-child(2) {
+    border-left: none;
+}
+
+.score_table td {
+    border-bottom: 2px dashed rgba(62, 117, 255, 1);
+    border-left: 3px solid rgba(62, 117, 255, 1);
+    padding: 8px;
+    background-image: url("./img/dot.png");
+    background-repeat: no-repeat;
+    background-size: 28px;
+    background-position: 95% center;
+}
+
+.score_table th {
+    color: rgba(62, 117, 255, 1);
+    font-weight: 700;
+    font-size: 15px;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+
+.score_table td:nth-child(1), .score_table td:nth-child(2), .score_table td:nth-child(3) {
+    color: rgba(63, 208, 255, 1);
+    height: 88px;
+}
+
+.score_table td:nth-child(1) {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-align: center;
+    width: 53px;
+    border: none;
+    padding: 2px;
+    background: none;
+}
+.score_table td:nth-child(2), .score_table td:nth-child(3) {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: left;
+    padding-left: 15px;
+}
+
+.score_table td:nth-child(2){
+    width: 239px;
+}
+
+.score_table td:nth-child(3){
+    width: 345px;
+}
+
+.score_table td:nth-child(4) {
+    font-family: 'Cabin', sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 34px;
+    text-align: center;
+    color: rgba(226, 24, 72, 1);
+    width: 245px;
+    height: 88px;
+}
+
+.footer__links {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.footer__links p{
+    width: 125px;
+    color: rgba(226, 24, 72, 1);
+    font-size: 22px;
+    margin: auto;
+    margin-bottom: 7px;
+}
+
+.footer__icons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer__icons img {
+    height: 25px;
+    margin: 0 14px 0 14px;
+}

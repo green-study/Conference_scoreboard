@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+    <link th:href="@{${'/static/img/favicon.ico'}}" rel="icon" type="image/x-icon" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{${'/static/mix.css'}}">
+    <script th:src="@{${'/static/main-sub.js'}}"></script>
+    <title>FETC Robolink</title>
+</head>
+<body>
+<div class="main__container">
+    <div class="second__container">
+        <div class="top_container">
+            <div class="icon">
+                <p>robolink.com</p>
+            </div>
+            <div class="icon">
+                <img th:src="@{/static/img/linkedIn.png}">
+            </div>
+            <div class="icon">
+                <img th:src="@{/static/img/instagram.png}">
+            </div>
+            <div class="icon">
+                <img th:src="@{/static/img/facebook.png}">
+            </div>
+            <div class="main__logo">
+                <img th:src="@{/static/img/robolink-logo.png}" alt="Robolink Logo">
+            </div>
+        </div>
+        <div class="star__logo">
+            <img th:src="@{/static/img/star.png}" alt="Star Logo">
+        </div>
+        <div class="third_container">
+            <div class="table__container">
+                <div class="page_button">
+                    <button id="top_10_button">TOP 10</button>
+                </div>
+                <table table th:class="${testers1.empty} ? 'hidden' : 'score_table'" th:id="${testers2.empty} ? 'hidden' : 'top_10_table'">
+                    <thead>
+                    <tr>
+                        <th>  </th>
+                        <th> NAME </th>
+                        <th> SCHOOL </th>
+                        <th> SCORE </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="tester, iterStat : ${testers1}">
+                        <td><span th:text="${iterStat.index + 1}"> NO </span></td>
+                        <td><span th:text="${tester.tname}"> NAME </span></td>
+                        <td><span th:text="${tester.tschool}"> SCHOOL </span></td>
+                        <td><span th:text="${tester.tscore}"> SCORE </span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-container">
+                <div class="page_button">
+                    <button id="leader_board_button">MOST RECENT</button>
+                </div>
+                <div class="scroll">
+                    <table th:class="${testers2.empty} ? 'hidden' : 'score_table'" th:id="${testers2.empty} ? 'hidden' : 'leader_board_table'">
+                        <thead>
+                        <tr>
+                            <th>  </th>
+                            <th> NAME </th>
+                            <th> SCHOOL </th>
+                            <th> SCORE </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="tester, iterStat : ${testers2}">
+                                <td><span th:text="${iterStat.index + 1}"> NO </span></td>
+                                <td><span th:text="${tester.tname}">NAME</span></td>
+                                <td><span th:text="${tester.tschool}">SCHOOL</span></td>
+                                <td><span th:text="${tester.tscore}">SCORE</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                <div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function autoScroll() {
+        var tableContainer = document.querySelector('.scroll');
+        tableContainer.scrollTop += 1;
+        if (tableContainer.scrollTop + tableContainer.clientHeight === tableContainer.scrollHeight) {
+            tableContainer.scrollTop = 0;
+        }
+    }
+
+    setInterval(autoScroll, 30);
+</script>
+</body>
+</html>

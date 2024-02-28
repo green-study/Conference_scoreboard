@@ -10,9 +10,15 @@
     <script th:src="@{${'/static/main-sub.js'}}"></script>
     <title>FETC Robolink</title>
     <style>
-        body, html {
-            height: 100%;
-            margin: 0;
+
+        .table-container {
+            height: 1180px;
+            overflow-y: hidden;
+            margin-top: 30px;
+        }
+
+        .blank {
+            height: 290px;
         }
     </style>
 </head>
@@ -29,7 +35,7 @@
             <button id="leader_board_button" onClick="location.href='main'">LEADER BOARD</button>
             <button id="top_10_button" onClick="location.href='sub'">TOP 10</button>
         </div>
-        <div class="table__container" >
+        <div class="table-container">
             <table th:class="${testers.empty} ? 'hidden' : 'score_table'">
                 <thead>
                 <tr>
@@ -51,17 +57,6 @@
         </div>
         <div class="blank">
         </div>
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                var blankElement = document.querySelector(".blank");
-                var referenceElement = document.querySelector(".table__container");
-
-                if(1200 - referenceElement.offsetHeight > 0){
-                    blankElement.style.height = (1200-referenceElement.offsetHeight) + "px";
-                }
-
-            });
-        </script>
         <footer class="footer__links">
             <p>
                 <span>robolink.com</span>
@@ -77,13 +72,15 @@
 </div>
 <script>
     function autoScroll() {
-        window.scrollBy(0, 1);
-        if (window.scrollY === (document.documentElement.scrollHeight - window.innerHeight)) {
-            window.scrollTo(0, 0);
+        var tableContainer = document.querySelector('.table-container');
+        tableContainer.scrollTop += 1;
+        if (tableContainer.scrollTop + tableContainer.clientHeight === tableContainer.scrollHeight) {
+            tableContainer.scrollTop = 0;
         }
     }
 
-    setInterval(autoScroll, 10);
+    setInterval(autoScroll, 20);
 </script>
+
 </body>
 </html>

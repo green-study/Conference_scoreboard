@@ -43,6 +43,26 @@ public class TesterController {
         return "sub";
     }
 
+    @GetMapping("/mix")
+    public String mix(Model model) {
+        List<Tester> testers2 = testerDao.selectList();
+        testers2.sort(Comparator.comparing(Tester::getTno).reversed());
+        model.addAttribute("testers2", testers2);
+        List<Tester> testers1 = testerDao.selectList();
+        testers1.sort(Comparator.comparing(Tester::getTscore)
+                .reversed()
+                .thenComparing(Tester::getTno, Comparator.reverseOrder()));
+        model.addAttribute("testers1", testers1);
+        if(testers1.size() > 10){
+            int size = testers1.size();
+            for(int i = 0; i<size-10; i++){
+                testers1.remove(10);
+            }
+        }
+
+        return "mix";
+    }
+
     @GetMapping("/admin")
     public String showAdminPage(Model model) {
 

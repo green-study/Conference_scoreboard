@@ -1,0 +1,232 @@
+@font-face {
+    font-family: 'Cabin';
+    src: url('fonts/Cabin-Regular.ttf') format('truetype'); /* 폰트 파일의 경로와 형식 지정 */
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: #05001C;
+    background-image: url('img/background-image.png'), url('img/background-image2.png');
+    background-size: 1000px, 1000px;
+    background-repeat : no-repeat;
+    background-position: center top, center bottom;
+    font-family: 'Cabin', sans-serif;
+}
+
+button {
+    font-family: 'Cabin', sans-serif;
+    letter-spacing: 2px;
+}
+
+.main__container{
+    width: 1860px;
+    height: 1060px;
+    margin: auto;
+}
+
+.second__container {
+    margin: 0 40px 0 40px;
+}
+
+.third_container {
+    display: flex;
+    justify-content: space-between;
+}
+.third_container .table__container,
+.third_container .table-container {
+    flex: 1;
+    margin-right: 10px; /* Optional: Adjust margin between tables */
+}
+
+#top_10_button {
+    width: 120px;
+    height: 40px;
+    border-radius: 36px;
+    font-size: 18px;
+    font-weight: 700;
+    background-color: rgba(63, 208, 255, 1);
+    color: rgba(28, 16, 66, 1);
+    border: none;
+    margin-bottom: 20px;
+}
+
+#leader_board_button {
+    width: 200px;
+    height: 40px;
+    border-radius: 36px;
+    font-size: 18px;
+    font-weight: 700;
+    background-color: rgba(63, 208, 255, 1);
+    color: rgba(28, 16, 66, 1);
+    border: none;
+    margin-bottom: 20px;
+}
+
+.top_container {
+    display: flex;
+    align-items: center;
+}
+
+
+.icon p{
+    width: 125px;
+    color: rgba(226, 24, 72, 1);
+    font-size: 20px;
+    margin-left: 55px;
+    margin-right: 40px;
+}
+
+.icon img {
+    height: 22px;
+    margin-right: 65px;
+}
+
+
+.main__logo img {
+    margin-left: 145px;
+    display: block;
+    width: 551px;
+}
+
+.star__logo img{
+    width: 220px;
+    position: absolute;
+    margin: -140px 0 0 1560px;
+}
+
+.page_button {
+    margin: 5px 12px 0 55px;
+}
+
+.score_table{
+    margin: auto;
+    margin-right: 45px;
+    padding: 10px;
+    background: linear-gradient(to right, rgba(62, 117, 255, 1) 2px, transparent 1px),
+    repeating-linear-gradient(rgba(62, 117, 255, 1), rgba(62, 117, 255, 1) 3px, #05001C 3px, #05001C 12px),
+    repeating-linear-gradient(rgba(62, 117, 255, 1), rgba(62, 117, 255, 1) 3px, #05001C 3px, #05001C 12px),
+    linear-gradient(to left, rgba(62, 117, 255, 1) 2px, transparent 1px);
+    background-size: 1.5px 100%, 3px 98%, 3px 98%, 1.5px 100%;
+    background-position: 54px center,59px center, 825px center, right center;
+    background-repeat: no-repeat;
+}
+
+.score_table tbody tr {
+    position: relative;
+}
+
+.score_table tbody tr:nth-child(1) td {
+    border-top: none;
+}
+
+.score_table tbody tr td:nth-child(2) {
+    border-left: none;
+}
+
+.score_table td {
+    border-bottom: 2px dashed rgba(62, 117, 255, 1);
+    border-left: 3px solid rgba(62, 117, 255, 1);
+    padding: 8px;
+    background-image: url("./img/dot.png");
+    background-repeat: no-repeat;
+    background-size: 28px;
+    background-position: 95% center;
+    height: 60px;
+}
+
+.score_table th {
+    color: rgba(62, 117, 255, 1);
+    font-weight: 700;
+    font-size: 15px;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+
+.score_table td:nth-child(1), .score_table td:nth-child(2), .score_table td:nth-child(3) {
+    color: rgba(63, 208, 255, 1);
+}
+
+.score_table td:nth-child(1) {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-align: center;
+    width: 53px;
+    border: none;
+    padding: 2px;
+    background: none;
+}
+.score_table td:nth-child(2), .score_table td:nth-child(3) {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 24px;
+    text-align: left;
+    padding-left: 15px;
+}
+
+.score_table td:nth-child(2){
+    width: 239px;
+}
+
+.score_table td:nth-child(3){
+    width: 390px;
+}
+
+.score_table td:nth-child(4) {
+    font-family: 'Cabin', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 34px;
+    text-align: center;
+    color: rgba(226, 24, 72, 1);
+    width: 200px;
+}
+
+
+.scroll {
+    height: 844px;
+    overflow-y: hidden;
+}
+
+#top_10_table tbody tr:nth-child(1)::after,
+#top_10_table tbody tr:nth-child(2)::after,
+#top_10_table tbody tr:nth-child(3)::after  {
+    content: '';
+    display: block;
+    width: 763px;
+    height: 74px;
+    background-color: rgba(62, 117, 255, 0.3);
+    position: absolute;
+    left: 50px;
+    z-index: -1;
+}
+
+#top_10_table tbody tr:nth-child(1) td:nth-child(4)::after,
+#top_10_table tbody tr:nth-child(2) td:nth-child(4)::after,
+#top_10_table tbody tr:nth-child(3) td:nth-child(4)::after
+{
+    content: '';
+    display: block;
+    width: 100px;
+    height: 40px;
+    background-image: url("img/win.png");
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 65px;
+    position: absolute;
+    top: 17.5px;
+    right: -30px;
+    z-index: 1;
+}
+
+#top_10_table tbody tr:nth-child(1) td:nth-child(2),
+#top_10_table tbody tr:nth-child(2) td:nth-child(2),
+#top_10_table tbody tr:nth-child(3) td:nth-child(2),
+#top_10_table tbody tr:nth-child(1) td:nth-child(3),
+#top_10_table tbody tr:nth-child(2) td:nth-child(3),
+#top_10_table tbody tr:nth-child(3) td:nth-child(3)
+{
+    color: rgba(255, 197, 0, 1);
+}

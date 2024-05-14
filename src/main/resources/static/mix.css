@@ -190,6 +190,17 @@ button {
     overflow-y: hidden;
 }
 
+.hidden {
+    display: none;
+}
+
+#last_score td:nth-child(2),
+#last_score td:nth-child(3),
+#last_score td:nth-child(4)
+{
+    border-bottom: 3px solid rgba(62, 117, 255, 1);
+}
+
 #top_10_table tbody tr:nth-child(1)::after,
 #top_10_table tbody tr:nth-child(2)::after,
 #top_10_table tbody tr:nth-child(3)::after  {
@@ -227,6 +238,40 @@ button {
 #top_10_table tbody tr:nth-child(1) td:nth-child(3),
 #top_10_table tbody tr:nth-child(2) td:nth-child(3),
 #top_10_table tbody tr:nth-child(3) td:nth-child(3)
+{
+    color: rgba(255, 197, 0, 1);
+}
+
+#first_score::after
+{
+    content: '';
+    display: block;
+    width: 763px;
+    height: 74px;
+    background-color: rgba(62, 117, 255, 0.3);
+    position: absolute;
+    left: 50px;
+    z-index: -1;
+}
+
+#first_score td:nth-child(4)::after
+{
+    content: '';
+    display: block;
+    width: 100px;
+    height: 40px;
+    background-image: url("img/new.png");
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: 65px;
+    position: absolute;
+    top: 17.5px;
+    right: -30px;
+    z-index: 1;
+}
+
+#first_score td:nth-child(2),
+#first_score td:nth-child(3)
 {
     color: rgba(255, 197, 0, 1);
 }

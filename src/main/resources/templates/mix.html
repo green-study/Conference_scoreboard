@@ -37,7 +37,7 @@
                 <div class="page_button">
                     <button id="top_10_button">TOP 10</button>
                 </div>
-                <table table th:class="${testers1.empty} ? 'hidden' : 'score_table'" th:id="${testers2.empty} ? 'hidden' : 'top_10_table'">
+                <table table th:class="${testers1.empty} ? 'hidden' : 'score_table'" th:id="${testers1.empty} ? 'hidden' : 'top_10_table'">
                     <thead>
                     <tr>
                         <th>  </th>
@@ -60,10 +60,10 @@
                 <div class="page_button">
                     <button id="leader_board_button">MOST RECENT</button>
                 </div>
-                <div class="scroll">
+                <div th:class="${#lists.size(testers2) >= 11} ? 'scroll' : ''">
                     <table th:class="${testers2.empty} ? 'hidden' : 'score_table'" th:id="${testers2.empty} ? 'hidden' : 'leader_board_table'">
                         <thead>
-                        <tr>
+                        <tr th:class="${#lists.size(testers2) >= 11} ? 'table_header' : ''">
                             <th>  </th>
                             <th> NAME </th>
                             <th> SCHOOL </th>
@@ -71,7 +71,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                            <tr th:each="tester, iterStat : ${testers2}">
+                            <tr th:each="tester, iterStat : ${testers2}" th:id="${iterStat.index == 0 ? 'first_score' : #lists.size(testers2) > 10 && iterStat.index == (#lists.size(testers2) - 1) ? 'last_score' : ''}">
                                 <td><span th:text="${iterStat.index + 1}"> NO </span></td>
                                 <td><span th:text="${tester.tname}">NAME</span></td>
                                 <td><span th:text="${tester.tschool}">SCHOOL</span></td>
@@ -86,12 +86,17 @@
 </div>
 <script>
     function autoScroll() {
-        var tableContainer = document.querySelector('.scroll');
-        tableContainer.scrollTop += 1;
-        if (tableContainer.scrollTop + tableContainer.clientHeight === tableContainer.scrollHeight) {
-            tableContainer.scrollTop = 0;
-        }
+        const scrollContainer = document.querySelector('.scroll');
+            scrollContainer.scrollTop += 1;
+
+            if (scrollContainer.scrollTop >= scrollContainer.scrollHeight - scrollContainer.clientHeight) {
+                const firstItem = scrollContainer.querySelector('tr:first-child');
+                scrollContainer.querySelector('tbody').appendChild(firstItem.cloneNode(true));
+                firstItem.remove();
+                scrollContainer.scrollTop -= firstItem.clientHeight;
+            }
     }
+
 
     setInterval(autoScroll, 30);
 </script>
